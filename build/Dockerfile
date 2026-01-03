@@ -37,17 +37,17 @@ RUN curl -L https://github.com/MetaCubeX/metacubexd/releases/download/${METACUBE
     rm compressed-dist.tgz
 
 # 获取 mihomo 程序最新版本，默认使用 qts 兼容的程序 mihomo-linux-amd64-compatible，其他系统需要自行更换下载链接
-# RUN MIHOMO_VERSION=$(curl -sL https://api.github.com/repos/MetaCubeX/mihomo/releases/latest | jq -r '.tag_name') && \
-#     curl -L https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}/mihomo-linux-amd64-compatible-${MIHOMO_VERSION}.gz -o mihomo.gz && \
-#     gzip -d mihomo.gz && \
-#     mv mihomo /usr/local/bin/mihomo && \
-#     chmod +x /usr/local/bin/mihomo
-
-# 下载 mihomo 程序 smart 内核
-RUN curl -L https://github.com/vernesong/mihomo/releases/download/Prerelease-Alpha/mihomo-linux-amd64-compatible-${MIHOMO_VERSION}.gz -o mihomo.gz && \
+RUN MIHOMO_VERSION=$(curl -sL https://api.github.com/repos/MetaCubeX/mihomo/releases/latest | jq -r '.tag_name') && \
+    curl -L https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}/mihomo-linux-amd64-compatible-${MIHOMO_VERSION}.gz -o mihomo.gz && \
     gzip -d mihomo.gz && \
     mv mihomo /usr/local/bin/mihomo && \
     chmod +x /usr/local/bin/mihomo
+
+# 下载 mihomo 程序 smart 内核
+# RUN curl -L https://github.com/vernesong/mihomo/releases/download/Prerelease-Alpha/mihomo-linux-amd64-compatible-${MIHOMO_VERSION}.gz -o mihomo.gz && \
+#    gzip -d mihomo.gz && \
+#    mv mihomo /usr/local/bin/mihomo && \
+#    chmod +x /usr/local/bin/mihomo
 
 # 创建配置文件目录
 RUN mkdir -p /etc/mihomo

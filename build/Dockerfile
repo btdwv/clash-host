@@ -9,7 +9,7 @@ ARG MIHOMO_VERSION
 # RUN sed -i 's#https\?://dl-cdn.alpinelinux.org/alpine#https://mirrors.cernet.edu.cn/alpine#g' /etc/apk/repositories
 
 # 安装系统依赖和 tzdata 以设置时区
-RUN apk add --no-cache tzdata unzip
+RUN apk add --no-cache tzdata unzip jq curl
 
 # 设置时区为 "Asia/Shanghai"
 RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
